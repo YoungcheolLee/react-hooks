@@ -29,20 +29,20 @@ const UseState = () => {
         ● 그렇다면 예제를 통해 상태(state)를 어떻게 관리하는지 알아보자. <br />
         <br />
         ◎ 상황예제 <br />
-        ● 스트레스를 풀기위해 동네에 있는 "감자 오락실" 에 들려 게임을 하려한다.
-        <br />● 게임을 하기위해선 코인을 추가해야 게임이 가능하기 때문에 우리는
-        코인의 상태를 바꾸려 한다는 가정을 해보자. <br />
+        ● 게임을 하기 위해 동네에 있는 "감자 오락실" 에 들려 게임을 하려한다.
+        <br />● 동전을 넣어 게임을 시작해보자. (동전이 없으면 게임시작 버튼
+        비활성화) <br />
       </span>
       <br />
       <hr />
       <div>
-        <h4>The KingOfFighter Game</h4>
+        <h4>[ ### The KingOfFighter Game ### ]</h4>
         <button disabled={disable} onClick={handleStartBtn}>
           {" "}
           GameStart !!
         </button>
         <h4>동전수량 : {coin}</h4>
-        <button onClick={handleCoinPlus}> 코인넣기 </button>
+        <button onClick={handleCoinPlus}> 동전넣기 </button>
       </div>
       <br />
       <hr />
