@@ -63,9 +63,6 @@ const UseState = () => {
         <br />
         handleCoinPlus, handleStartBtn 함수에 조건을 걸어 상태(state)를
         변경해주었다. <br />
-        <br />
-        이처럼 ReactHook의 useState는 상태(state)를 변경해주는 기능을
-        담당하고있다.
       </span>
     </div>
   );
