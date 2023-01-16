@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const UseEffect = () => {
+  const [text, setText] = useState("");
+
   return (
     <div>
       <div className="useEffect">
