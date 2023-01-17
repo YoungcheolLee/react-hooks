@@ -3,6 +3,16 @@ import { useState } from "react";
 const UseEffect = () => {
   const [text, setText] = useState("");
 
+  const handleSubmit = () => {
+    setText((prevState) => {
+      return [text, ...prevState];
+    });
+  };
+
+  const handleInputChange = (e) => {
+    return setText(e.target.value);
+  };
+
   return (
     <div>
       <div className="useEffect">
@@ -23,9 +33,12 @@ const UseEffect = () => {
         <br />
         <hr />
         <div>
-          <input type={"text"}></input>
-          <button>저장</button> <br />
-          <h3>입력받은 내용들</h3>
+          <input type="text" value={text} onChange={handleInputChange}></input>
+          <button onClick={handleSubmit}>저장</button> <br />
+          <div>
+            <h3>입력받은 내용들</h3>
+            <div></div>
+          </div>
           <br />
         </div>
       </div>
