@@ -1,16 +1,17 @@
 import { useState } from "react";
 
 const UseEffect = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState([]);
+  const [input, setInput] = useState("");
 
   const handleSubmit = () => {
     setText((prevState) => {
-      return [text, ...prevState];
+      return [input, ...prevState];
     });
   };
 
   const handleInputChange = (e) => {
-    return setText(e.target.value);
+    return setInput(e.target.value);
   };
 
   return (
@@ -33,11 +34,15 @@ const UseEffect = () => {
         <br />
         <hr />
         <div>
-          <input type="text" value={text} onChange={handleInputChange}></input>
+          <input type="text" value={input} onChange={handleInputChange}></input>
           <button onClick={handleSubmit}>저장</button> <br />
           <div>
             <h3>입력받은 내용들</h3>
-            <div></div>
+            <div>
+              {text.map((item, idx) => {
+                return <div key={idx}>{input}</div>;
+              })}
+            </div>
           </div>
           <br />
         </div>
