@@ -45,6 +45,7 @@ const UseEffect = () => {
             </div>
           </div>
           <br />
+          <hr />
         </div>
       </div>
     </div>
