@@ -1,52 +1,30 @@
 import { useState, useEffect } from "react";
 
 const UseEffect = () => {
-  const [text, setText] = useState([]);
-  const [input, setInput] = useState("");
+  let [count, setCount] = useState(0);
+  const [doodle, setDoodle] = useState("");
 
-  const handleSubmit = () => {
-    setText((prevState) => {
-      return [input, ...prevState];
-    });
-  };
-
-  const handleInputChange = (e) => {
-    return setInput(e.target.value);
-  };
+  // dependency array에 doodle을 넣어 doodle이 변경될 때 useEffect를 실행시켜 줌.
+  // count 변화 시 useEffect 실행되지 않는다.
+  useEffect(() => {
+    console.log("useEffect 실행!");
+  }, [doodle]);
 
   return (
     <div>
-      <div className="useEffect">
-        <span>
-          <h2>▣ useEffect 란? </h2>
-          <br />
-          ● 어떠한 컴포넌트가 Mount(렌더링) 되거나 Update(리 렌더링) 되거나
-          Unmount(화면에서 사라짐) 되었을 때<br />
-          ● 내가 원하는 기능을 실행시키고 싶을 때 사용한다. <br />
-          ● 바로 예제를 통해 useEffect 기능을 사용해보자. <br />
-          <br />
-          <br />
-          ◎ 상황예제 <br />
-          ● text를 입력받는 필드를 만들고 "저장" 버튼을 눌렀을 때만 console에
-          저장 기능이 실행이 되는지 확인해 보도록 하자. <br />
-          <br />
-        </span>
+      <div>
+        <span>버튼을 누른 횟수 : {count}</span> <br />
+        <button onClick={() => setCount(count + 1)}>Click Me!</button>
+        <button onClick={() => setCount((count = 0))}> reset! </button>
+      </div>
+      <div>
+        <input
+          type="text"
+          value={doodle}
+          onChange={(e) => setDoodle(e.target.value)}
+        />
         <br />
-        <hr />
-        <div>
-          <input type="text" value={input} onChange={handleInputChange}></input>
-          <button onClick={handleSubmit}>저장</button> <br />
-          <div>
-            <h3>입력받은 내용들</h3>
-            <div>
-              {text.map((item, idx) => {
-                return <div key={idx}>{input}</div>;
-              })}
-            </div>
-          </div>
-          <br />
-          <hr />
-        </div>
+        <span>{doodle}</span>
       </div>
     </div>
   );
