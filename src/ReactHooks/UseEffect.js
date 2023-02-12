@@ -4,16 +4,36 @@ const UseEffect = () => {
   let [count, setCount] = useState(0);
   const [doodle, setDoodle] = useState("");
 
-  // dependency array에 doodle을 넣어 doodle이 변경될 때 useEffect를 실행시켜 줌.
-  // count 변화 시 useEffect 실행되지 않는다.
+  //Unmount Example State
+  const [isVisible, setIsvisible] = useState(false);
+
+  //toggle 함수 : toggle 함수 실행 시 isVisible이 true로 바뀜
+  const toggle = () => {
+    setIsvisible(!isVisible);
+  };
+
+  //Unmount 함수 추가
+  const Unmount = () => {
+    useEffect(() => {
+      console.log("mount!");
+
+      //Unmount 시점에 실행되는 코드
+      return () => {
+        console.log("Unmount!");
+      };
+    }, []);
+
+    return <div>Unmount Component</div>;
+  };
+
   useEffect(() => {
     console.log("useEffect 실행!");
-  }, [doodle]);
+  }, []);
 
   return (
     <div>
       <div>
-        <span>버튼을 누른 횟수 : {count}</span> <br />
+        <span>count : {count} </span> <br />
         <button onClick={() => setCount(count + 1)}>Click Me!</button>
         <button onClick={() => setCount((count = 0))}> reset! </button>
       </div>
@@ -24,7 +44,18 @@ const UseEffect = () => {
           onChange={(e) => setDoodle(e.target.value)}
         />
         <br />
-        <span>{doodle}</span>
+        <div style={{ marginBottom: 50 }}>
+          <span>{doodle}</span>
+        </div>
+        <br />
+        <div>
+          <h2>
+            useEffect - Clean up 예제 <br />
+            toggle button
+          </h2>
+          <button onClick={toggle}> ON / OFF </button>
+          <h4>{isVisible && <Unmount />} </h4>
+        </div>
       </div>
     </div>
   );
