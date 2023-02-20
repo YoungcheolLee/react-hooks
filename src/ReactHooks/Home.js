@@ -11,6 +11,9 @@ const Home = () => {
       <div>
         2. <Link to={"/UseEffect"}> useEffect </Link>
       </div>
+      <div>
+        3. <Link to={"/UseRef"}> useRef </Link>
+      </div>
     </div>
   );
 };
