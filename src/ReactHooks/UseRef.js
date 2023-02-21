@@ -6,6 +6,7 @@ useRef와 useState의 차이점,
 컴포넌트 안의 변수와 useRef의 차이점
  - 렌더링 시점에 변수 > 데이터 초기화 / useRef > 데이터 유지
 */
+
 import { useEffect, useRef, useState } from "react";
 
 const UseRef = () => {

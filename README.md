@@ -43,14 +43,12 @@ ref object는 수정이가능해서 언제든 원하는 값으로 변경 가능�
 
 ### useState와 useRef의 차이점
 
-- useState : 변화 > rendering > 컴포넌트 안의 value 초기화
-
-- useRef : rendering > 컴포넌트 안의 value 유지됨
+- useRef에 할당된 값을 변경할 경우 즉시 변경된 값이 반영이 되고, useState에 할당된 값이 변경되는 시점은 re-rendering이 일어난 후 이다.
 
 ### useRef 특징
 
-- useState 대신 useRef를 사용한다면 값을 변경했을 때 변경되지 않아야 할 값에 적용하면 좋다.
+- 사용하는 컴포넌트 안에 자주 바뀌어야 하는 값을 useState를 사용한다면 값이 변경될 때 마다 rendering이 일어나게 되는데 이 값을 useRef에 할당한다면 값이 자주 바뀌어도 rendering이 일어나지 않기 때문에 값이 화면에 출력이 되지 않기를 원할 때 사용하기 유용하다.
 
-- 일반 변수의 값과 useRef의 값을 비교했을 때 해당 컴포넌트가 렌더링이 될 때 변수는 초기화 되지만 useRef의 값은 초기화되지 않는다.
+- var나 let으로 선언한 변수의 값과 useRef의 값을 비교했을 때 해당 컴포넌트가 렌더링이 되는 시점에 var나 let으로 선언한 변수는 초기화 되지만 useRef의 값은 초기화되지 않는다.
 
 - DOM 요소의 접근을 가능하게 해준다.
