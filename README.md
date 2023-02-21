@@ -21,7 +21,7 @@ App.js에 ReactRouter library를 사용하여 각각의 reacthooks 목록을 연
 
 3. Unmount
 
-## UseRef
+## useRef
 
 useRef를 부르면 ref object를 반환해준다.
 
