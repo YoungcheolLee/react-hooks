@@ -1,32 +1,43 @@
+/*
+useRef와 useState의 차이점, 
+1. useState : state의 값이 변화할때마다 rendering이 된다.
+2. useRef : ref의 값이 변화하더라도 rendering이 되지 않는다.
+
+컴포넌트 안의 변수와 useRef의 차이점
+1. 
+*/
 import { useRef, useState } from "react";
 
 const UseRef = () => {
-  const inputName = useRef();
-  const introduceInput = useRef();
-  const [name, setName] = useState({ name: "", introduce: "" });
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+  let myVariable = 0;
 
-  const handleInputChange = (e) => {
-    if(name.inputName.length < 1) {
-      alert("이름을 입력해주세요!");
-      inputName.current.focus();
-      return;
-    }
+  console.log("countRef =", countRef);
 
-    if (name.introduce.length < 1) {
-      alert("자기소개를 입력해주세요!");
-      introduceInput.current.focus();
-      return;
-    }
+  const increaseCount = () => {
+    setCount(count + 1);
+    console.log("stateRendering");
+  };
 
-    alert("저장성공!");
-  }
+  const increaseCountRef = () => {
+    countRef.current = countRef.current + 1;
+    console.log("countRef =", countRef.current);
+  };
+
+  const increaseVariable = () => {
+    myVariable = myVariable + 1;
+    console.log("myVariable = ", myVariable);
+  };
 
   return (
-    <div>
-      This is UseRef Page
-      <div>
-        <input ref="name" value={name} placeholder={"이름을 입력해주세요!"} onChange={handleInputChange}} />
-      </div>
+    <div className="useRef-wrraper">
+      <p>COUNT : {count}</p>
+      <p>countRef : {countRef.current}</p>
+      <p>myVariable : {myVariable}</p>
+      <button onClick={increaseCount}>COUNT 증가</button>
+      <button onClick={increaseCountRef}>countRef 증가</button>
+      <button onClick={increaseVariable}>myVaribale 증가</button>
     </div>
   );
 };
